@@ -1,12 +1,32 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title">{{feedCtrl.feed.keywords}}</h3>
-                </div>
-                <div class="panel-body">
-                    {{feedCtrl.feed.description}}
+            <div class="well well-lg">
+                <img class="feed-userImg" src="http://lorempixel.com/56/56/people/1" alt="icon">
+
+                <h3 class="feed-keywords">{{feedCtrl.feed.feedQuery.keywords}}</h3>
+                <h5 class="feed-description">{{feedCtrl.feed.feedQuery.description}}</h5>
+
+                <div class="list-group feed-auctions">
+
+                    <div ng-repeat="auction in feedCtrl.feed.auctions">
+                        <div class="list-group-item">
+                            <div class="row-picture">
+                                <img class="circle" ng-src="{{auction.image}}" alt="Auction image">
+                            </div>
+                            <div class="row-content">
+                                <div class="least-content">{{auction.vendor}}</div>
+                                <h4 class="list-group-item-heading">{{auction.title}}</h4>
+
+                                <a href="{{auction.url}}" target="_blank" class="more">
+                                    <span>More </span>
+                                    <i class="mdi-navigation-arrow-forward"></i>
+                                </a>
+
+                            </div>
+                        </div>
+                        <div class="list-group-separator"></div>
+                    </div>
                 </div>
             </div>
         </div>

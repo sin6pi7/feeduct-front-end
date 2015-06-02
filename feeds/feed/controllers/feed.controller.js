@@ -1,15 +1,17 @@
 (function() {
-  var feedCtrl = function ($stateParams) {
+  var feedCtrl = function ($stateParams, feedsfactory) {
+    var that = this;
     this.feedId = $stateParams.id;
 
-    this.feed = {
-      id: this.feedId,
-      keywords: "czarne kapcie 37",
-      description: "to tylko moczek moczunio :)"
-    }
+    feedsfactory.getById(this.feedId).then(
+      function (data) {
+        that.feed = data[0];
+        console.log(that.feed);
+      }
+    );
   };
 
-  feedCtrl.$inject = ['$stateParams'];
+  feedCtrl.$inject = ['$stateParams', 'FeedsFactory'];
 
   angular.module('feeductFrontEnd.feeds').controller('FeedCtrl', feedCtrl);
 })();

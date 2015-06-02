@@ -1,15 +1,52 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-12" ng-repeat="feed in feedsCtrl.feeds">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title">{{feed.keywords}}</h3>
+        <div class="col-md-8 col-md-offset-2 feeds-searchAndNew-wrapper">
+            <div class="feeds-searchAndNew-wrapper-inner">
+                <input type="search" ng-model="search" class="feeds-search"
+                       placeholder="E.g. shoes adidas nike blue"/>
+                <button class="btn btn-default btn-fab btn-raised mdi-content-add feeds-newFeed" ng-click="feedsCtrl.showNewFeedForm()"></button>
+            </div>
+            <form name="newFeedForm" ng-show="feedsCtrl.newFeedFormVisible" ng-submit="feedsCtrl.addFeed()" novalidate>
+                <fieldset>
+                    <legend>Add new feed</legend>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <input ng-model="feedsCtrl.feed.keywords" type="text" class="form-control" id="feedKeywords" placeholder="Keywords" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <textarea ng-model="feedsCtrl.feed.description" class="form-control" rows="3" id="feedDescription" required></textarea>
+                            <span class="help-block text-left">Just write few words why you need it :)</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-default" type="reset" ng-click="feedsCtrl.hideNewFeedForm()">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <div class="list-group col-md-8 col-md-offset-2">
+        <div class="well" ng-repeat="feed in feedsCtrl.feeds | filter:search">
+            <div class="list-group-item">
+                <div class="row-picture">
+                    <img class="circle" src="http://lorempixel.com/56/56/people/1" alt="icon">
                 </div>
-                <div class="panel-body">
-                    {{feed.description}}
-                    <a ui-sref="feeds.feed({id: feed.id})" class="feeds-more"><i class="mdi-navigation-arrow-forward"></i><span>More</span></a>
+                <div class="row-content">
+                    <div class="least-content">{{feed.auctions.length}} offers</div>
+                    <h4 class="list-group-item-heading">{{feed.feedQuery.keywords}}</h4>
+
+                    <p class="list-group-item-text">{{feed.feedQuery.description}}</p>
+                    <a ui-sref="feeds.feed({id: feed.id.id})" class="more">
+                        <span>More </span>
+                        <i class="mdi-navigation-arrow-forward"></i>
+                    </a>
+
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>

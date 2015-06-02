@@ -14,11 +14,64 @@
     margin-bottom: 30px;
 }
 
-.feeds-more {
+.more {
     float: right;
+    font-size: 1.4em;
+    color: #5B9900;
 }
 
-.feeds-more i,
-.feeds-more span {
+.more:hover {
+    color: #427a00;
+}
+
+.more i,
+.more span {
     vertical-align: middle;
+}
+
+.feeds-searchAndNew-wrapper {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.feeds-search,
+.feeds-newFeed {
+    vertical-align: middle;
+}
+
+.feeds-search {
+    margin-right: 10px;
+    max-width: 400px;
+    width: 100%;
+    height: 40px;
+    border: 2px solid #4A4A4A;
+    border-radius: 4px;
+    outline: 0;
+    line-height: 40px;
+    padding: 0 13px;
+}
+
+form[name="newFeedForm"] {
+    margin-top: 30px;
+}
+
+.feed-userImg,
+.feed-keywords {
+    float: left;
+}
+
+.feed-userImg {
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
+    margin-right: 20px;
+}
+
+.feed-description {
+    clear: left;
+    margin-left: 120px;
+}
+
+.feed-auctions {
+    margin-top: 40px;
 }
