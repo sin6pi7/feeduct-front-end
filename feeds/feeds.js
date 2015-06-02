@@ -1,15 +1,17 @@
 (function () {
   var routes = function ($stateProvider) {
-    $stateProvider.
-      state('feeds.list', {
+    $stateProvider
+      .state('feeds.list', {
         url: '',
-        views: {
-          'feeds-list': {
-            templateUrl: 'feeds/partials/feeds.partial.html',
-            controller: 'FeedsCtrl',
-            controllerAs: 'feedsCtrl'
-          }
-        }
+        templateUrl: 'feeds/list/partials/feeds.partial.html',
+        controller: 'FeedsCtrl',
+        controllerAs: 'feedsCtrl'
+      })
+      .state('feeds.feed', {
+        url: '/:id',
+        templateUrl: 'feeds/feed/partials/feed.partial.html',
+        controller: 'FeedCtrl',
+        controllerAs: 'feedCtrl'
       });
   };
   routes.$inject = ['$stateProvider'];

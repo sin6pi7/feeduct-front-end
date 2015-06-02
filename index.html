@@ -18,7 +18,7 @@
 <body ng-app="feeductFrontEnd" id="feeduct-app">
 
 
-<div ng-include="'header.partial.html'"></div>
+<div ng-include="'common/partials/header.partial.html'"></div>
 
 <div ui-view></div>
 
@@ -39,7 +39,8 @@
 
 <!-- feeds module -->
 <script src="feeds/feeds.js"></script>
-<script src="feeds/controllers/feeds.controller.js"></script>
+<script src="feeds/list/controllers/feeds.controller.js"></script>
+<script src="feeds/feed/controllers/feed.controller.js"></script>
 
 <!-- APP JS -->
 <script src="app.js"></script>

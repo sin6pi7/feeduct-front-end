@@ -1,0 +1,15 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12" ng-repeat="feed in feedsCtrl.feeds">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{feed.keywords}}</h3>
+                </div>
+                <div class="panel-body">
+                    {{feed.description}}
+                    <a ui-sref="feeds.feed({id: feed.id})" class="feeds-more"><i class="mdi-navigation-arrow-forward"></i><span>More</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
