@@ -15,20 +15,10 @@
     <link href="app.css" rel="stylesheet"/>
 
 </head>
-<body ng-app="feeductFrontEnd">
+<body ng-app="feeductFrontEnd" id="feeduct-app">
 
-<!-- TODO: move to partial -->
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="jumbotron">
-                <h1>Feeduct</h1>
 
-                <p>Declare desire and get the stuff you need!</p>
-            </div>
-        </div>
-    </div>
-</div>
+<div ng-include="'header.partial.html'"></div>
 
 <div ui-view></div>
 
