@@ -1,0 +1,24 @@
+{
+  "name": "feeduct-front-end",
+  "version": "0.0.0",
+  "homepage": "https://github.com/sin6pi7/feeduct-front-end",
+  "authors": [
+    "sin6pi7 <jac.zyla@gmail.com>"
+  ],
+  "description": "Front end for Feeduct web app",
+  "main": "app/index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.0",
+    "bootstrap-material-design": "~0.3.0",
+    "angular-ui-router": "~0.2.15",
+    "bootstrap": "~3.3.4"
+  }
+}
