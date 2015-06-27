@@ -4,7 +4,13 @@
             <div class="feeds-searchAndNew-wrapper-inner">
                 <input type="search" ng-model="search" class="feeds-search"
                        placeholder="E.g. shoes adidas nike blue"/>
-                <button class="btn btn-default btn-fab btn-raised mdi-content-add feeds-newFeed" ng-click="feedsCtrl.showNewFeedForm()"></button>
+                <button class="btn btn-default btn-fab btn-raised mdi-content-add feeds-newFeed" ng-click="feedsCtrl.showNewFeedForm()"
+                        ng-show="isUserAuthenticated"></button>
+
+                <div>asfas {{isUserAuthenticated}}</div>
+                <div>asfas {{foo}}</div>
+
+
             </div>
             <form name="newFeedForm" ng-show="feedsCtrl.newFeedFormVisible" ng-submit="feedsCtrl.addFeed()" novalidate>
                 <fieldset>
@@ -48,5 +54,4 @@
             </div>
         </div>
     </div>
-</div>
 </div>

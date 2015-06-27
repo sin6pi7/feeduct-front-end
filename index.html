@@ -17,7 +17,7 @@
     <link href="app.css" rel="stylesheet"/>
 
 </head>
-<body ng-app="feeductFrontEnd" id="feeduct-app">
+<body ng-app="feeductFrontEnd" id="feeduct-app" ng-controller="AuthCtrl as authCtrl">
 
 
 <div ng-include="'common/partials/header.partial.html'"></div>
@@ -41,6 +41,7 @@
 
 <!-- feeds module -->
 <script src="feeds/feeds.js"></script>
+<script src="feeds/auth/auth.controller.js"></script>
 <script src="feeds/list/controllers/feeds.controller.js"></script>
 <script src="feeds/feed/controllers/feed.controller.js"></script>
 <script src="feeds/services/feeds.factory.js"></script>

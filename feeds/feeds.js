@@ -18,4 +18,5 @@
 
   angular.module('feeductFrontEnd.feeds', ['ui.router'])
     .config(routes);
+  console.log("module loading");
 })();
