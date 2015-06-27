@@ -1,5 +1,5 @@
 var config = {
-  "endpoint": "http://localhost:8082"
+  "endpoint": "https://raduy.pagekite.me"
 };
 
 angular.module('feeductFrontEnd.feeds').constant('devConfig', config);

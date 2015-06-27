@@ -4,30 +4,29 @@
             <div class="feeds-searchAndNew-wrapper-inner">
                 <input type="search" ng-model="search" class="feeds-search"
                        placeholder="E.g. shoes adidas nike blue"/>
-                <button class="btn btn-default btn-fab btn-raised mdi-content-add feeds-newFeed" ng-click="feedsCtrl.showNewFeedForm()"
-                        ng-show="isUserAuthenticated"></button>
-
-                <div>asfas {{isUserAuthenticated}}</div>
-                <div>asfas {{foo}}</div>
-
-
+                <button class="btn btn-default btn-fab btn-raised mdi-content-add feeds-newFeed"
+                        ng-click="feedsCtrl.showNewFeedForm()"
+                        ></button>
             </div>
             <form name="newFeedForm" ng-show="feedsCtrl.newFeedFormVisible" ng-submit="feedsCtrl.addFeed()" novalidate>
                 <fieldset>
                     <legend>Add new feed</legend>
                     <div class="form-group">
                         <div class="col-md-12">
-                            <input ng-model="feedsCtrl.feed.keywords" type="text" class="form-control" id="feedKeywords" placeholder="Keywords" required>
+                            <input ng-model="feedsCtrl.feed.keywords" type="text" class="form-control" id="feedKeywords"
+                                   placeholder="Keywords" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-12">
-                            <textarea ng-model="feedsCtrl.feed.description" class="form-control" rows="3" id="feedDescription" required></textarea>
+                            <textarea ng-model="feedsCtrl.feed.description" class="form-control" rows="3"
+                                      id="feedDescription" required></textarea>
                             <span class="help-block text-left">Just write few words why you need it :)</span>
                         </div>
                     </div>
                     <div class="form-group">
-                        <button class="btn btn-default" type="reset" ng-click="feedsCtrl.hideNewFeedForm()">Cancel</button>
+                        <button class="btn btn-default" type="reset" ng-click="feedsCtrl.hideNewFeedForm()">Cancel
+                        </button>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </fieldset>

@@ -17,8 +17,7 @@
     <link href="app.css" rel="stylesheet"/>
 
 </head>
-<body ng-app="feeductFrontEnd" id="feeduct-app" ng-controller="AuthCtrl as authCtrl">
-
+<body ng-app="feeductFrontEnd" id="feeduct-app">
 
 <div ng-include="'common/partials/header.partial.html'"></div>
 
@@ -37,7 +36,8 @@
 </script>
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-
+<script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 
 <!-- feeds module -->
 <script src="feeds/feeds.js"></script>
@@ -49,5 +49,12 @@
 
 <!-- APP JS -->
 <script src="app.js"></script>
+
+<!-- common -->
+<script src="common/login-modal/services/loginModal.service.js"></script>
+<script src="common/login-modal/controllers/loginModal.controller.js"></script>
+<script src="common/services/usersApi.factory.js"></script>
+
+
 </body>
 </html>

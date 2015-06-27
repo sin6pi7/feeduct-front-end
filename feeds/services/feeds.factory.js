@@ -6,7 +6,7 @@ var feedsFactory = function ($http, devConfig) {
           return response.data.data;
         },
         function (error) {
-          return error;
+          throw error;
         }
       )
     },
@@ -16,12 +16,12 @@ var feedsFactory = function ($http, devConfig) {
           return response.data.data;
         },
         function (error) {
-          return error;
+          throw error;
         }
       )
     },
     addFeed: function(feed) {
-      return $http.post(devConfig.endpoint + '/feeds/', feed).then();
+      return $http.post(devConfig.endpoint + '/feeds/', feed);
     }
   }
 };

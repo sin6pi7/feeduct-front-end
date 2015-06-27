@@ -14,6 +14,16 @@
     margin-bottom: 30px;
 }
 
+.welcome {
+    text-align: center;
+}
+
+.welcome-text {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
+}
+
 .more {
     float: right;
     font-size: 1.4em;
