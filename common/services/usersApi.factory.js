@@ -20,12 +20,15 @@
         .then(function (response) {
           var data = response.data;
           if (typeof data.authenticated === "undefined") {
-            return $q.reject(new Error('Authentication failed.'));
+            throw new Error('Authentication failed.');
           }
           return {
             username: data.principal.username,
             role: data.authorities.role
           }
+        })
+        .catch(function (error) {
+          throw error;
         });
     }
   };

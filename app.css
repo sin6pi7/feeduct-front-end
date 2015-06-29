@@ -18,6 +18,21 @@
     text-align: center;
 }
 
+form[name="loginForm"] {
+    text-align: center;
+}
+
+form[name="loginForm"] .form-group:not(.buttons) {
+    display: inline-block;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.alert-login {
+    margin-top: 20px;
+    text-align: center;
+}
+
 .welcome-text {
     display: inline-block;
     vertical-align: middle;

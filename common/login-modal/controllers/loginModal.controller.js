@@ -1,19 +1,25 @@
 (function () {
 
-  var LoginModalCtrl = function ($scope, UsersApi) {
+  var LoginModalCtrl = function ($scope, $timeout, UsersApi) {
     this.cancel = $scope.$dismiss;
+    this.loginError = false;
+    var that = this;
 
     this.submit = function (email, password) {
-      UsersApi.login({email: email, password: password}).then(function (user) {
+      UsersApi.login({email: email, password: password})
+      .then(function (user) {
         $scope.$close(user);
-      },
-      function (error) {
-        $scope.$dismiss(error);
+      })
+      .catch(function (error) {
+        that.loginError = error;
+        $timeout(function () {
+          that.loginError = false;
+        }, 2000);
       });
     };
   };
 
-  LoginModalCtrl.$inject = ['$scope', 'UsersApi'];
+  LoginModalCtrl.$inject = ['$scope', '$timeout', 'UsersApi'];
 
   angular.module('feeductFrontEnd').controller('LoginModalCtrl', LoginModalCtrl);
 })();

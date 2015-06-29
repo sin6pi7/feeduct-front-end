@@ -5,9 +5,22 @@
 </div>
 <div class="modal-footer">
     <form name="loginForm" ng-submit="LoginModalCtrl.submit(LoginModalCtrl.email, LoginModalCtrl.password)" novalidate>
-        <input type="text" id="email" ng-model="LoginModalCtrl.email"/>
-        <input type="password" id="password" ng-model="LoginModalCtrl.password"/>
-        <button class="btn btn-primary" type="submit">Submit</button>
-        <button class="btn btn-warning" ng-click="LoginModalCtrl.cancel()">Cancel</button>
+        <div class="form-group">
+            <input class="form-control floating-label" type="text" id="email" ng-model="LoginModalCtrl.email"
+                   placeholder="Username"/>
+        </div>
+        <div class="form-group">
+            <input class="form-control floating-label" type="password" id="password" ng-model="LoginModalCtrl.password"
+                                       placeholder="Password"/>
+        </div>
+        <div class="form-group buttons">
+            <button class="btn btn-primary" type="submit">Submit</button>
+            <button class="btn btn-warning" ng-click="LoginModalCtrl.cancel()">Cancel</button>
+        </div>
     </form>
+
+    <div class="alert alert-dismissable alert-danger alert-login" ng-show="LoginModalCtrl.loginError">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <strong>Oh snap!</strong> Authentication failed!
+    </div>
 </div>

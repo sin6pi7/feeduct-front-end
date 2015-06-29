@@ -49,7 +49,6 @@
           })
           // modal didn't work either - login failed => redirect to welcome page
           .catch(function (err) {
-            console.error(err);
             return $state.go('welcome');
           });
         }
