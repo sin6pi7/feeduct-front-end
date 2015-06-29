@@ -1,5 +1,5 @@
 (function () {
-  var UsersApi = function ($http, devConfig) {
+  var UsersApi = function ($http, devConfig, $q) {
 
     var usersApi = {
       login: login
@@ -20,7 +20,7 @@
         .then(function (response) {
           var data = response.data;
           if (typeof data.authenticated === "undefined") {
-            throw new Error('Authentication failed.');
+            return $q.reject(new Error('Authentication failed.'));
           }
           return {
             username: data.principal.username,
@@ -30,7 +30,7 @@
     }
   };
 
-  UsersApi.$inject = ['$http', 'devConfig'];
+  UsersApi.$inject = ['$http', 'devConfig', '$q'];
 
   angular.module('feeductFrontEnd').service('UsersApi', UsersApi);
 })();

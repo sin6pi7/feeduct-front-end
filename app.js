@@ -37,21 +37,21 @@
 
           // let the browser use cookies first
           UsersApi.login({})
-            // cookies worked - save user
-            .then(function (user) {
-              $rootScope.currentUser = user;
-            })
-            // didn't work - prompt with login modal
-            .catch(LoginModalService)
-            // logged in either with cookies or modal => go to desired state
-            .then(function () {
-              return $state.go(toState.name, toParams);
-            })
-            // modal didn't work either - login failed => redirect to welcome page
-            .catch(function (err) {
-              console.error(err);
-              return $state.go('welcome');
-            });
+          // cookies worked - save user
+          .then(function (user) {
+            $rootScope.currentUser = user;
+          })
+          // didn't work - prompt with login modal
+          .catch(LoginModalService)
+          // logged in either with cookies or modal => go to desired state
+          .then(function () {
+            return $state.go(toState.name, toParams);
+          })
+          // modal didn't work either - login failed => redirect to welcome page
+          .catch(function (err) {
+            console.error(err);
+            return $state.go('welcome');
+          });
         }
       });
 
