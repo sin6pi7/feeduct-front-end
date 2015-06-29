@@ -6,7 +6,7 @@
                        placeholder="E.g. shoes adidas nike blue"/>
                 <button class="btn btn-default btn-fab btn-raised mdi-content-add feeds-newFeed"
                         ng-click="feedsCtrl.showNewFeedForm()"
-                        ng-show="$rootScope.currentUser.role === 'ROLE_ADMIN'"
+                        ng-show="$root.currentUser.roles.indexOf('ROLE_ADMIN') > -1"
                         ></button>
             </div>
             <form name="newFeedForm" ng-show="feedsCtrl.newFeedFormVisible" ng-submit="feedsCtrl.addFeed()" novalidate>

@@ -2,7 +2,8 @@
   var UsersApi = function ($http, devConfig, $q) {
 
     var usersApi = {
-      login: login
+      login: login,
+      logout: logout
     };
 
     return usersApi;
@@ -24,12 +25,20 @@
           }
           return {
             username: data.principal.username,
-            role: data.authorities.role
+            roles: data.authorities.map(function (auth) { return auth.role; })
           }
         })
         .catch(function (error) {
           throw error;
         });
+    }
+
+    function logout() {
+      // TODO: POST to /logout and then clear $rootScope.currentUser
+      // placeholder - remove when implemented
+      var deferred = $q.defer();
+      deferred.resolve(true);
+      return deferred.promise;
     }
   };
 

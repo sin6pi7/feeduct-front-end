@@ -8,13 +8,6 @@
         templateUrl: 'welcome/partials/welcome.partial.html',
         data: {
           requireLogin: false
-        },
-        resolve: {
-          redirectWhenLogged: function ($rootScope, $state) {
-            if (typeof $rootScope.currentUser !== 'undefined') {
-              $state.go('feeds.list');
-            }
-          }
         }
       })
       .state('feeds', {
@@ -37,9 +30,10 @@
     .run(function ($rootScope, $state, LoginModalService, UsersApi) {
 
       $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
-        var requireLogin = toState.data.requireLogin;
+        var requireLogin = toState.data.requireLogin,
+            userLogged = typeof $rootScope.currentUser !== 'undefined';
 
-        if (requireLogin && typeof $rootScope.currentUser === 'undefined') {
+        if (requireLogin && !userLogged) {
           event.preventDefault();
 
           // let the browser use cookies first

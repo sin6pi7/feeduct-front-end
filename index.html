@@ -19,7 +19,7 @@
 </head>
 <body ng-app="feeductFrontEnd" id="feeduct-app">
 
-<div ng-include="'common/partials/header.partial.html'"></div>
+<div ng-include="'common/partials/header.partial.html'" ng-controller="HeaderCtrl as HeaderCtrl"></div>
 
 <div ui-view></div>
 
@@ -50,6 +50,7 @@
 <script src="app.js"></script>
 
 <!-- common -->
+<script src="common/controllers/header.controller.js"></script>
 <script src="common/login-modal/services/loginModal.service.js"></script>
 <script src="common/login-modal/controllers/loginModal.controller.js"></script>
 <script src="common/services/usersApi.factory.js"></script>
