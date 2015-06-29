@@ -8,6 +8,13 @@
         templateUrl: 'welcome/partials/welcome.partial.html',
         data: {
           requireLogin: false
+        },
+        resolve: {
+          redirectWhenLogged: function ($rootScope, $state) {
+            if (typeof $rootScope.currentUser !== 'undefined') {
+              $state.go('feeds.list');
+            }
+          }
         }
       })
       .state('feeds', {
