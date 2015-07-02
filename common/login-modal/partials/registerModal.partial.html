@@ -1,0 +1,26 @@
+<div class="modal-header">
+    <h3 class="modal-title">Reqister</h3>
+</div>
+<div class="modal-body">
+</div>
+<div class="modal-footer">
+    <form name="loginForm" ng-submit="RegisterModalCtrl.submit(RegisterModalCtrl.email, RegisterModalCtrl.password)" novalidate>
+        <div class="form-group">
+            <input class="form-control floating-label" type="text" id="email" ng-model="RegisterModalCtrl.email"
+                   placeholder="Email"/>
+        </div>
+        <div class="form-group">
+            <input class="form-control floating-label" type="password" id="password" ng-model="RegisterModalCtrl.password"
+                                       placeholder="Password"/>
+        </div>
+        <div class="form-group buttons">
+            <button class="btn btn-primary" type="submit">Reqister</button>
+            <button class="btn btn-warning" ng-click="RegisterModalCtrl.cancel()">Cancel</button>
+        </div>
+    </form>
+
+    <div class="alert alert-dismissable alert-danger alert-login" ng-show="RegisterModalCtrl.registerError">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <strong>Oh snap!</strong> Registration failed! {{RegisterModalCtrl.registerError}}
+    </div>
+</div>

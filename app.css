@@ -106,3 +106,7 @@ form[name="newFeedForm"] {
 .feed-auctions {
     margin-top: 40px;
 }
+
+.margin-bottom {
+    margin-bottom: 20px;
+}

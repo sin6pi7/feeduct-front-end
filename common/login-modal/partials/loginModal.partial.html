@@ -19,6 +19,12 @@
         </div>
     </form>
 
+    <div class="row">
+        <a class="col-md-12" ng-click="LoginModalCtrl.goToRegistration()">
+            Want a brand new account?
+        </a>
+    </div>
+
     <div class="alert alert-dismissable alert-danger alert-login" ng-show="LoginModalCtrl.loginError">
         <button type="button" class="close" data-dismiss="alert">×</button>
         <strong>Oh snap!</strong> Authentication failed!

@@ -3,12 +3,13 @@
 
         return {
             login: login,
-            logout: logout
+            logout: logout,
+            register: register
         };
 
         function login(credentials) {
-            return $http.post('http://localhost:9000/api/v1/login', credentials
-            ).success(function (response) {
+            return $http.post('http://localhost:9000/api/v1/login', credentials)
+                .success(function (response) {
                     window.sessionStorage.setItem(devConfig.AUTH_TOKEN_NAME, response.data[0].token);
                     $rootScope.currentUser = {credentials: credentials};
                     $state.go('feeds.list');
@@ -18,8 +19,8 @@
         }
 
         function logout() {
-            $http.post('http://localhost:9000/api/v1/logout', {}
-            ).success(function (response) {
+            $http.post('http://localhost:9000/api/v1/logout', {})
+                .success(function (response) {
                     console.log("logout success");
                     delete $rootScope.currentUser;
                     window.sessionStorage.removeItem(devConfig.AUTH_TOKEN_NAME);
@@ -27,6 +28,14 @@
                 }).error(function (error) {
                     console.log(error)
                 });
+        }
+
+        function register(credentials) {
+            return $http.post('http://localhost:9000/api/v1/register', credentials)
+                .success(function (response) {
+                    console.log("successfully registred user")
+
+            });
         }
     };
 

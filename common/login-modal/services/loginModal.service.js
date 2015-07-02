@@ -2,9 +2,7 @@
   var LoginModalService = function ($modal, $rootScope) {
 
     function assignCurrentUser(userResult) {
-      //console.log("currentUser: ", user);
       $rootScope.currentUser = userResult.data.data;
-      //return user;
     }
 
     return function () {
