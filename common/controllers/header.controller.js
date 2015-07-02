@@ -1,17 +1,21 @@
 (function () {
-  var headerCtrl = function ($state, UsersApi) {
-    this.logout = function () {
-      UsersApi.logout()
-        .then(function () {
-          $state.go('welcome');
-        })
-        .catch(function (error) {
-          throw error;
-        })
-    }
-  };
+    var headerCtrl = function ($state, UsersApi, devConfig) {
+        this.logout = function () {
+            UsersApi.logout()
+                .then(function () {
+                    $state.go('welcome');
+                })
+                .catch(function (error) {
+                    throw error;
+                })
+        };
 
-  headerCtrl.$inject = ['$state', 'UsersApi'];
+        this.isUserLoggedIn = function() {
+            return !!window.sessionStorage.getItem(devConfig.AUTH_TOKEN_NAME)
+        }
+    };
 
-  angular.module('feeductFrontEnd').controller('HeaderCtrl', headerCtrl);
+    headerCtrl.$inject = ['$state', 'UsersApi', 'devConfig'];
+
+    angular.module('feeductFrontEnd').controller('HeaderCtrl', headerCtrl);
 })();

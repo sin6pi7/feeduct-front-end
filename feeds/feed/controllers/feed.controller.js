@@ -6,7 +6,6 @@
     feedsfactory.getById(this.feedId).then(
       function (data) {
         that.feed = data[0];
-        console.log(that.feed);
       }
     );
   };

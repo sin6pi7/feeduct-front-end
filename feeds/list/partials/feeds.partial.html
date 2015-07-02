@@ -5,9 +5,10 @@
                 <input type="search" ng-model="search" class="feeds-search"
                        placeholder="E.g. shoes adidas nike blue"/>
                 <button class="btn btn-default btn-fab btn-raised mdi-content-add feeds-newFeed"
-                        ng-click="feedsCtrl.showNewFeedForm()"
-                        ng-show="$root.currentUser.roles.indexOf('ROLE_ADMIN') > -1"
-                        ></button>
+                        ng-click="feedsCtrl.showNewFeedForm()"></button>
+
+                <!--ng-show="$root.currentUser.roles.indexOf('ROLE_ADMIN') > -1"-->
+
             </div>
             <form name="newFeedForm" ng-show="feedsCtrl.newFeedFormVisible" ng-submit="feedsCtrl.addFeed()" novalidate>
                 <fieldset>

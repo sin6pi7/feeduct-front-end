@@ -1,59 +1,59 @@
 (function () {
-  var routes = function ($stateProvider, $urlRouterProvider, $httpProvider) {
-    $urlRouterProvider.otherwise("/welcome");
+    var routes = function ($stateProvider, $urlRouterProvider, $httpProvider) {
+        $urlRouterProvider.otherwise("/welcome");
 
-    $stateProvider
-      .state('welcome', {
-        url: '/welcome',
-        templateUrl: 'welcome/partials/welcome.partial.html',
-        data: {
-          requireLogin: false
-        }
-      })
-      .state('feeds', {
-        url: '/feeds',
-        templateUrl: 'feeds/feeds.layout.html',
-        abstract: 'true',
-        data: {
-          requireLogin: true
-        }
-      });
+        $stateProvider
+            .state('welcome', {
+                url: '/welcome',
+                templateUrl: 'welcome/partials/welcome.partial.html',
+                controller: 'LoginModalCtrl',
+                controllerAs: 'loginModalCtrl',
+                data: {
+                    requireLogin: false
+                }
+            })
+            .state('feeds', {
+                url: '/feeds',
+                templateUrl: 'feeds/feeds.layout.html',
+                abstract: 'true',
+                data: {
+                    requireLogin: true
+                }
+            });
 
-    $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-    $httpProvider.defaults.withCredentials = true;
-  };
+        $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+        $httpProvider.defaults.withCredentials = true;
 
-  routes.$inject = ['$stateProvider', '$urlRouterProvider', '$httpProvider'];
+        var addAuthTokenInterceptor = function () {
+            return {
+                request: function (config) {
+                    var token = window.sessionStorage.getItem('authToken');
+                    console.log("interceptor.token:", token);
+                    if (token) {
+                        config.headers['Authorization'] = 'Bearer ' + token;
+                    }
+                    return config;
+                }
+            }
+        };
 
-  angular.module('feeductFrontEnd', ['feeductFrontEnd.feeds', 'ui.router', 'ui.bootstrap'])
-    .config(routes)
-    .run(function ($rootScope, $state, LoginModalService, UsersApi) {
+        $httpProvider.interceptors.push(addAuthTokenInterceptor);
+    };
 
-      $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
-        var requireLogin = toState.data.requireLogin,
-            userLogged = typeof $rootScope.currentUser !== 'undefined';
+    routes.$inject = ['$stateProvider', '$urlRouterProvider', '$httpProvider'];
 
-        if (requireLogin && !userLogged) {
-          event.preventDefault();
+    angular.module('feeductFrontEnd', ['feeductFrontEnd.feeds', 'ui.router', 'ui.bootstrap'])
+        .config(routes)
+        .run(function ($rootScope, $state, LoginModalService, UsersApi) {
 
-          // let the browser use cookies first
-          UsersApi.login({})
-          // cookies worked - save user
-          .then(function (user) {
-            $rootScope.currentUser = user;
-          })
-          // didn't work - prompt with login modal
-          .catch(LoginModalService)
-          // logged in either with cookies or modal => go to desired state
-          .then(function () {
-            return $state.go(toState.name, toParams);
-          })
-          // modal didn't work either - login failed => redirect to welcome page
-          .catch(function (err) {
-            return $state.go('welcome');
-          });
-        }
-      });
+            $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
+                var requireLogin = toState.data.requireLogin,
+                    userLogged = typeof $rootScope.currentUser !== 'undefined';
 
-    });
+
+                if (requireLogin && !window.sessionStorage.getItem('authToken')) {
+                    LoginModalService();
+                }
+            });
+        });
 })();
