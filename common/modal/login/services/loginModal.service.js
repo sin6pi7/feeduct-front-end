@@ -7,7 +7,7 @@
 
     return function () {
       var instance = $modal.open({
-        templateUrl: 'common/login-modal/partials/loginModal.partial.html',
+        templateUrl: 'common/modal/login/partials/loginModal.partial.html',
         controller: 'LoginModalCtrl',
         controllerAs: 'LoginModalCtrl',
         backdrop: true

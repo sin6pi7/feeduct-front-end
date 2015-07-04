@@ -3,7 +3,7 @@
 
     return function () {
       $modal.open({
-        templateUrl: 'common/login-modal/partials/registerModal.partial.html',
+        templateUrl: 'common/modal/register/partials/registerModal.partial.html',
         controller: 'RegisterModalCtrl',
         controllerAs: 'RegisterModalCtrl',
         backdrop: false
