@@ -28,7 +28,6 @@
             return {
                 request: function (config) {
                     var token = window.sessionStorage.getItem('authToken');
-                    console.log("interceptor.token:", token);
                     if (token) {
                         config.headers['Authorization'] = 'Bearer ' + token;
                     }
@@ -36,7 +35,6 @@
                 }
             }
         };
-
         $httpProvider.interceptors.push(addAuthTokenInterceptor);
     };
 
@@ -44,14 +42,13 @@
 
     angular.module('feeductFrontEnd', ['feeductFrontEnd.feeds', 'ui.router', 'ui.bootstrap'])
         .config(routes)
-        .run(function ($rootScope, $state, LoginModalService, UsersApi) {
+        .run(function ($rootScope, $state, LoginModalService) {
 
-            $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
+            $rootScope.$on('$stateChangeStart', function (event, toState) {
                 var requireLogin = toState.data.requireLogin,
-                    userLogged = typeof $rootScope.currentUser !== 'undefined';
+                    userLogged = !window.sessionStorage.getItem('authToken');
 
-
-                if (requireLogin && !window.sessionStorage.getItem('authToken')) {
+                if (requireLogin && userLogged) {
                     LoginModalService();
                 }
             });

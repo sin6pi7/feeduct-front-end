@@ -110,3 +110,57 @@ form[name="newFeedForm"] {
 .margin-bottom {
     margin-bottom: 20px;
 }
+
+.spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120px;
+    height: 120px;
+    margin: -60px 0 0 -60px;
+    -webkit-animation: spin 2s linear infinite;
+    -moz-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+
+@-moz-keyframes spin {
+    100% {
+        -moz-transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+.spinner-add-new-feed {
+    margin-top: 2px;
+}
+
+.opacity {
+    opacity: 0.6;
+}
+
+.animate-show {
+    -webkit-transition: all linear 0.5s;
+    transition: all linear 0.5s;
+    opacity: 1;
+}
+
+.visibility-hidden {
+    visibility: hidden;
+}
+
+.list-group-item-heading:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}

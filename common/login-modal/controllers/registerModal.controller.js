@@ -18,5 +18,5 @@
 
     registerModalCtrl.$inject = ['$scope', '$timeout', 'UsersApi', '$state'];
 
-    angular.module('feeductFrontEnd').controller('RegisterModalCtrl', registerModalCtrl());
+    angular.module('feeductFrontEnd').controller('RegisterModalCtrl', registerModalCtrl);
 })();

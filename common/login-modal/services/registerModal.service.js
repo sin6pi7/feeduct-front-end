@@ -1,18 +1,17 @@
 (function () {
-  var registerModalService = function ($modal, $rootScope) {
+  var registerModalService = function ($modal) {
 
     return function () {
-      var instance = $modal.open({
+      $modal.open({
         templateUrl: 'common/login-modal/partials/registerModal.partial.html',
         controller: 'RegisterModalCtrl',
         controllerAs: 'RegisterModalCtrl',
-        backdrop: true
+        backdrop: false
       });
     };
   };
 
-  registerModalService.$inject = ['$modal', '$rootScope'];
+  registerModalService.$inject = ['$modal'];
 
   angular.module('feeductFrontEnd').service('RegisterModalService', registerModalService);
-
 })();

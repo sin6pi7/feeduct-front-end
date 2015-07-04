@@ -9,7 +9,7 @@
             UsersApi.login({email: email, password: password})
                 .then(function (user) {
                     $scope.$close(user);
-                    $state.go($state.current, {}, {reload: true});
+                    $state.go('feeds.list', {}, {reload: true});
                 })
                 .catch(function (error) {
                     that.loginError = error;
@@ -19,7 +19,7 @@
         this.goToRegistration = function () {
             this.cancel();
             RegisterModalService();
-        }
+        };
     };
 
     LoginModalCtrl.$inject = ['$scope', '$timeout', 'UsersApi', '$state', 'RegisterModalService'];
