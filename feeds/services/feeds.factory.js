@@ -1,7 +1,7 @@
 var feedsFactory = function ($http, devConfig) {
     return {
         getAll: function () {
-            return $http.get(devConfig.endpoint + '/feeds/').then(
+            return $http.get(devConfig.endpoint + '/feeds').then(
                 function (response) {
                     return response.data.data;
                 },
@@ -21,7 +21,7 @@ var feedsFactory = function ($http, devConfig) {
             )
         },
         addFeed: function (feed) {
-            return $http.post(devConfig.endpoint + '/feeds/', feed);
+            return $http.post(devConfig.endpoint + '/feeds', feed);
         },
 
         removeFeed: function(feedId) {
